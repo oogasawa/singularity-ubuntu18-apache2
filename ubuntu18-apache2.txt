@@ -15,6 +15,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 	httpd-2.4.35.tar.gz /root
 	apr-1.6.5.tar.gz    /root
 	apr-util-1.6.1.tar.gz /root
+	apache_start.sh /usr/local/bin
+	apache_stop.sh  /usr/local/bin
+
 
 %labels
     Maintainer Osamu Ogasawara
@@ -55,6 +58,9 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 	./configure --with-included-apr
 	make -j 8
 	make install
+
+	chmod +x /usr/local/bin/apache_start.sh
+	chmod +x /usr/local/bin/apache_stop.sh
 
 
 	
