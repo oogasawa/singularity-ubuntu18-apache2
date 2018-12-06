@@ -12,12 +12,12 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
 %files
     # copying files from the host system to the container.
-	httpd-2.4.35.tar.gz /root
-	apr-1.6.5.tar.gz    /root
-	apr-util-1.6.1.tar.gz /root
+	httpd-2.4.35.tar.gz /usr/local/src
+	apr-1.6.5.tar.gz    /usr/local/src
+	apr-util-1.6.1.tar.gz /usr/local/src
 	apache_start.sh /usr/local/bin
 	apache_stop.sh  /usr/local/bin
-	edit_httpd_conf.pl /usr/local/apache2
+	edit_httpd_conf.pl /usr/local/src
 
 
 %labels
@@ -40,10 +40,10 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 	
     apt-get -y install emacs wget build-essential
 	apt-get -y install automake autoconf libtool less
-	apt-get -y install libxml2-dev libpcre3
+	apt-get -y install libxml2-dev libpcre3 libexpat1-dev
 
     export LC_CTYPE=C
-    cd /root
+    cd /usr/local/src
     tar zxvf httpd-2.4.35.tar.gz
     cd httpd-2.4.35/srclib
 
@@ -66,6 +66,7 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 
     # edit httpd.conf
     cd /usr/local/apache2
+    cp /usr/local/src/edit_httpd_conf.pl .
     cat conf/httpd.conf | perl edit_httpd_conf.pl > httpd.conf
     mv conf/httpd.conf conf/httpd.conf.bak
     cp httpd.conf conf/httpd.conf
