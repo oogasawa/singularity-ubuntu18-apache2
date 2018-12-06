@@ -14,36 +14,42 @@ Apache2はソースコードからインストールする。
 
 ## 前提
 
-- Singularityがインストールされていること。
+(1) Singularityがインストールされていること。
     - [Singularityのインストール方法（Official Document)](https://www.sylabs.io/guides/2.6/user-guide/installation.html) 
     
 
-Ubuntu Linuxにインストールする場合
+(2) debootstrapがインストールされていること。
+
+Ubuntu Linuxにインストールする場合、以下のようにする。
 
     sudo apt update
     sudo apt upgrade
     sudo apt install build-essential libtool automake libarchive-dev debootstrap git emacs
     
-    
-    
+CentOSでは現時点では試していないが、以下のような記事がある。
+- https://linuxconfig.org/how-to-debootstrap-on-centos-linux
     
 
 ## 使い方
 
     # sandboxコンテナのビルド
-    git clone http://gitlab.ddbj.nig.ac.jp/oogasawa/ubuntu18-apache2-singularity
-    sudo singularity build --sandbox your-container-name ubuntu18-apache2-singularity/ubuntu18-apache2.txt
+    git clone http://gitlab.ddbj.nig.ac.jp/oogasawa/singularity-ubuntu18-apache2
+    cd singularity-ubuntu18-apache2
+    mkdir -f ~/singularity-images
+    sudo singularity build --sandbox ~/singularity-images/ubuntu18-apache2 singularity-ubuntu18-apache2
+    
+ディレクトリ名 `~/singularity-images/`, イメージ名ubuntu18-apache2はお好みで変えること。
     
     # sandboxコンテナ内での作業
-    sudo singularity shell --writable your-container-name
+    sudo singularity shell --writable ~/singularity-images/ubuntu18-apache2
     
     # simgファイルに固める。
-    sudo singularity build your-container-name.simg your-container-name
+    sudo singularity build ~/singularity-images/ubuntu18-apache2.simg ~/singularity-images/ubuntu18-apache2
     
 ### apache用singularityコンテナの起動と停止 (execコマンドによる)
 
     # run your container as a service.
-    singularity instance.start your-container.simg  web1
+    singularity instance.start ~/singulariy-images/ubuntu18-apache2.simg  web1
     
     # start apache2 server
     singularity exec instance://web1 apache_start.sh
