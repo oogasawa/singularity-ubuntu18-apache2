@@ -42,33 +42,33 @@ MirrorURL: http://us.archive.ubuntu.com/ubuntu/
 	apt-get -y install automake autoconf libtool less
 	apt-get -y install libxml2-dev libpcre3
 
-	export LC_CTYPE=C
-	cd /root
-	tar zxvf httpd-2.4.35.tar.gz
-	cd httpd-2.4.25/srclib
+    export LC_CTYPE=C
+    cd /root
+    tar zxvf httpd-2.4.35.tar.gz
+    cd httpd-2.4.35/srclib
 
     cp ../../apr-1.6.5.tar.gz .
-	tar zxvf apr-1.6.5.tar.gz
-	mv apr-1.6.5 apr
+    tar zxvf apr-1.6.5.tar.gz
+    mv apr-1.6.5 apr
 
     cp ../../apr-util-1.6.1.tar.gz .
-	tar zxvf apr-util-1.6.1.tar.gz
-	mv apr-util-1.6.1 apr-util
+    tar zxvf apr-util-1.6.1.tar.gz
+    mv apr-util-1.6.1 apr-util
 
-	cd ..
-	./configure --with-included-apr
-	make -j 8
-	make install
+    cd ..
+    ./configure --with-included-apr
+    make -j 8
+    make install
 
-	# chmod start/stop scripts.
-	chmod +x /usr/local/bin/apache_start.sh
-	chmod +x /usr/local/bin/apache_stop.sh
+    # chmod start/stop scripts.
+    chmod +x /usr/local/bin/apache_start.sh
+    chmod +x /usr/local/bin/apache_stop.sh
 
-	# edit httpd.conf
+    # edit httpd.conf
     cd /usr/local/apache2
-	cat conf/httpd.conf | perl edit_httpd_conf.pl > httpd.conf
-	mv conf/httpd.conf conf/httpd.conf.bak
-	cp httpd.conf conf/httpd.conf
+    cat conf/httpd.conf | perl edit_httpd_conf.pl > httpd.conf
+    mv conf/httpd.conf conf/httpd.conf.bak
+    cp httpd.conf conf/httpd.conf
 	
 
 
