@@ -14,7 +14,7 @@ Apache2はソースコードからインストールする。
 
 ## 前提
 
-(1) Singularityがインストールされていること。
+(1) Singularity version 2.x (2.6.0推奨)がインストールされていること。
 - [Singularityのインストール方法（Official Document)](https://www.sylabs.io/guides/2.6/user-guide/installation.html) 
     
 
