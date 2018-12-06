@@ -18,13 +18,13 @@ Apache2はソースコードからインストールする。
 - [Singularityのインストール方法（Official Document)](https://www.sylabs.io/guides/2.6/user-guide/installation.html) 
     
 
-(2) debootstrapがインストールされていること。
+(2) debootstrapとgitがインストールされていること。
 
 Ubuntu Linuxにインストールする場合、以下のようにする。
 
     sudo apt update
     sudo apt upgrade
-    sudo apt install build-essential libtool automake libarchive-dev debootstrap git emacs
+    sudo apt install debootstrap git
     
 CentOSでは現時点では試していないが、以下のような記事がある。
 - https://linuxconfig.org/how-to-debootstrap-on-centos-linux
