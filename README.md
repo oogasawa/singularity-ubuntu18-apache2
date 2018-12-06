@@ -36,7 +36,7 @@ CentOSでは現時点では試していないが、以下のような記事が�
     git clone http://gitlab.ddbj.nig.ac.jp/oogasawa/singularity-ubuntu18-apache2
     cd singularity-ubuntu18-apache2
     mkdir -f ~/singularity-images
-    sudo singularity build --sandbox ~/singularity-images/ubuntu18-apache2 singularity-ubuntu18-apache2
+    sudo singularity build --sandbox ~/singularity-images/ubuntu18-apache2 Singularity
     
 ディレクトリ名 `~/singularity-images/`, イメージ名ubuntu18-apache2はお好みで変えること。
     
